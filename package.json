@@ -2,7 +2,7 @@
     "name": "@xaridar/rat",
     "version": "1.0.0",
     "description": "RAT templating language",
-    "main": "server.js",
-    "author": "",
+    "main": "index.js",
+    "author": "xaridar",
     "license": "MIT"
 }
