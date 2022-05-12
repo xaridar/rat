@@ -68,7 +68,7 @@ const renderRat = (content, opts, err) => {
 
     // Links
     updated = updated.replaceAll(/(\S+)<(.*)>/g, `<a href="$2">$1</a>`);
-    updated = updated.replaceAll(/\s<([^a\n]*)>/g, `<a href="$1">$1</a>`);
+    updated = updated.replaceAll(/\s<([^a\n][^\n]*)>/g, `<a href="$1">$1</a>`);
 
     // Headers
     const headerMatch = updated.matchAll(/(?<=(\n\s*)?)(>+)(.+)/g);
@@ -83,16 +83,23 @@ const renderRat = (content, opts, err) => {
         );
     }
     // Divs
-    updated = updated.replace(
-        /\{\.([a-zA-Z0-9-_]*)([^]*?)\}/g,
-        `<div class="$1">$2</div>`
-    );
-    updated = updated.replace(
-        /\|\.([a-zA-Z0-9-_]*)([^]*?)\|/g,
-        `<div class="centered $1">$2</div>`
-    );
-    updated = updated.replace(/\{([^]*?)\}/g, `<div>$1</div>`);
-    updated = updated.replace(/\|([^]*?)\|/g, `<div class="centered">$1</div>`);
+    let last = updated;
+    do {
+        last = updated;
+        updated = updated.replaceAll(
+            /{\.([a-zA-Z0-9-_]*)([^]*)}/g,
+            `<div class="$1">$2</div>`
+        );
+        updated = updated.replaceAll(
+            /\|\.([a-zA-Z0-9-_]*)([^]*)\|/g,
+            `<div class="centered $1">$2</div>`
+        );
+        updated = updated.replaceAll(/{([^]*)}/g, `<div>$1</div>`);
+        updated = updated.replaceAll(
+            /\|([^]*)\|/g,
+            `<div class="centered">$1</div>`
+        );
+    } while (last !== updated);
 
     // ULs
     updated = updated.replaceAll(/- (.*)/g, '<li>$1</li>');
@@ -122,7 +129,7 @@ const renderRat = (content, opts, err) => {
     updated = updated.replaceAll(/(?<=^\s*)(<a.*)$/gm, '<p>$1</p>');
 
     // newlines
-    updated = updated.replaceAll(/(\r?\n){2}/g, '<br />');
+    updated = updated.replaceAll(/(\r?\n){3}/g, '<br />');
     let cssText = '';
     if (!cssFile) {
         const text = fs.readFileSync(
@@ -163,4 +170,4 @@ const enableRat = (app) => {
     });
 };
 
-module.exports = { enableRat };
+module.exports = { enableRat, renderRat };
