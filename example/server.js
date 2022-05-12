@@ -1,5 +1,5 @@
 const express = require('express');
-const { enableRat } = require('../rat-template');
+const { enableRat } = require('../rat');
 
 const app = express();
 app.use(express.static('public'));
