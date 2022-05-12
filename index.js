@@ -71,7 +71,7 @@ const renderRat = (content, opts, err) => {
     updated = updated.replaceAll(/\s<([^a\n][^\n]*)>/g, `<a href="$1">$1</a>`);
 
     // Headers
-    const headerMatch = updated.matchAll(/(?<=(\n\s*)?)(>+)(.+)/g);
+    const headerMatch = updated.matchAll(/(?<=(?:\n|^)(\s*)?)(>+)(.+)/g);
     while (!(next = headerMatch.next()).done) {
         if (next.value[2].length > 6) {
             err('Incorrect number of > before header; only accept 1-6');
@@ -87,16 +87,16 @@ const renderRat = (content, opts, err) => {
     do {
         last = updated;
         updated = updated.replaceAll(
-            /{\.([a-zA-Z0-9-_]*)([^]*)}/g,
+            /\{\.([a-zA-Z0-9-_]+)([^]*?)(?:\}|(?:\{[^]*?\})[^]*\})/g,
             `<div class="$1">$2</div>`
         );
         updated = updated.replaceAll(
-            /\|\.([a-zA-Z0-9-_]*)([^]*)\|/g,
+            /\|\.([a-zA-Z0-9-_]+)([^]*?)(?:\||(?:\|[^]*?\|)[^]*\|)/g,
             `<div class="centered $1">$2</div>`
         );
-        updated = updated.replaceAll(/{([^]*)}/g, `<div>$1</div>`);
+        updated = updated.replaceAll(/\{([^]*?)(?:\}|(?:\{[^]*?\})[^]*\})/g, `<div>$1</div>`);
         updated = updated.replaceAll(
-            /\|([^]*)\|/g,
+            /\|([^]*?)(?:\}|(?:\|[^]*?\|)[^]*\|)/g,
             `<div class="centered">$1</div>`
         );
     } while (last !== updated);

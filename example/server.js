@@ -1,5 +1,5 @@
 const express = require('express');
-const { enableRat } = require('@xaridar/rat');
+const { enableRat } = require('..');
 
 const app = express();
 app.use(express.static('public'));
