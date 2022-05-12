@@ -1,0 +1,14 @@
+{
+    "name": "rat-template_example",
+    "version": "1.0.0",
+    "description": "RAT templating language example server",
+    "main": "server.js",
+    "scripts": {
+        "start": "node ."
+    },
+    "author": "xaridar",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.1"
+    }
+}

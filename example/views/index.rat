@@ -1,0 +1,20 @@
+^ theme: %textColor%
+^ bg: aliceblue
+^ css: /css.css
+>Webpage!!!
+>>This is a webpage about: %subject%
+
+{.sec1
+    >>>Section 1
+    This is a section about %section1%
+    It is very cool
+    Here<%section1img%> is a pic: [%section1img%]
+}
+
+{.sec2
+    >>>Section 2
+    Here we have many names like:
+    !%names% *name* {
+        1. %name%
+    }
+}
