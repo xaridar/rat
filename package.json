@@ -1,6 +1,6 @@
 {
     "name": "@xaridar/rat",
-    "version": "1.1.1",
+    "version": "1.1.0",
     "description": "RAT templating language",
     "main": "index.js",
     "author": "xaridar",
