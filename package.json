@@ -18,7 +18,7 @@
 	"homepage": "https://github.com/xaridar/rat",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/xaridar/rat"
+		"url": "git+https://github.com/xaridar/rat.git"
 	},
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/"
