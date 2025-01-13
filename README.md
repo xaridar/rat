@@ -1,6 +1,6 @@
 # RAT
 
-RAT is a simple HTML templating language for displaying simple pages with state in express.js.
+RAT is a simple HTML templating language for displaying simple pages with state in Express.
 
 <br>
 
@@ -58,6 +58,7 @@ Ordered lists are preceded by any number followed by a period, space, and elemen
 ```
 
 ## Variables
+
 Variables passed in on compilation can be accessed between %s like: `%variable%`
 
 If a requested variable is not passed, an error will occur
@@ -74,33 +75,39 @@ For example:
 
 would compile to an ordered list of elements, with `%name%` replaced by each individual name in `%names%`.
 
-
 ## Properties
+
 RAT supports a couple properties at the top of the file.
-To specify a property, use  
+To specify a property, use
+
 ```
 ^ [property name]: [value]
 ```
 
 Currently, the supported properties are:
-- `theme` for theme color
-- `bg` for background color
+
+-   `theme` for theme color
+-   `bg` for background color
 
 These two properties are to specify color only when using default styles. They accept any CSS-accepted color, including hsl, rgb, rgba, hexadecimal, or CSS color words.
 
-- `css` for custom CSS file
+-   `css` for custom CSS file
 
 By default, styling is provided by a default CSS file. However, another CSS file can be specified and linked to.  
-Custom classes can also be added to divs in RAT by using the syntax  
+Custom classes can also be added to divs in RAT by using the syntax
+
 ```
 {.class-name
     content
 }
 ```
+
 This can then be styled using a CSS reference to `.class-name` in a custom file.
 
 # API
+
 Here are the basic capabilities of the API:
+
 ```js
 const rat = require('@xaridar/rat');
 
@@ -108,7 +115,7 @@ const rat = require('@xaridar/rat');
 const err = console.error;
 
 // variables
-const options = {names: ['Bob', 'Sally']};
+const options = { names: ['Bob', 'Sally'] };
 
 // get raw HTML output from file
 const html = rat.renderRat('string of RAT', options, err);
@@ -127,8 +134,8 @@ rat.enableRat(app);
 app.set('view engine', rat);
 
 app.get('/', (req, res) => {
-    res.render('index', {
-        names: req.query.names
-    });
-})
+	res.render('index', {
+		names: req.query.names,
+	});
+});
 ```

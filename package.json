@@ -1,26 +1,31 @@
 {
-    "name": "@xaridar/rat",
-    "version": "2.0.0",
-    "description": "RAT templating language",
-    "main": "dist/index.js",
-    "scripts": {
-        "build": "tsc",
-        "build:watch": "tsc --watch"
-    },
-    "type": "commonjs",
-    "author": "xaridar",
-    "license": "MIT",
-    "homepage": "https://github.com/xaridar/rat",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/xaridar/rat"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
-    "devDependencies": {
-        "typescript": "^4.6.4",
-        "@types/express": "^4.17.13",
-        "@types/node": "^17.0.33"
-    }
+	"name": "@xaridar/rat",
+	"version": "2.0.0",
+	"description": "RAT templating language",
+	"keywords": [
+		"HTML",
+		"RAT",
+		"template"
+	],
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"build:watch": "tsc --watch"
+	},
+	"type": "commonjs",
+	"author": "xaridar",
+	"license": "MIT",
+	"homepage": "https://github.com/xaridar/rat",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xaridar/rat"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"devDependencies": {
+		"typescript": "^4.6.4",
+		"@types/express": "^4.17.13",
+		"@types/node": "^17.0.33"
+	}
 }
