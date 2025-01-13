@@ -130,7 +130,7 @@ const renderRat = (
 	if (cssFile === 'none') {
 		return `<head>\n<style>\n${cssText}\n</style>\n</head>\n<body>\n${updated}\n</body>`;
 	}
-	return `<head>\n<link rel="stylesheet" type="text/css" href=${cssFile} />\n<style>\n${cssText}\n</style>\n</head>\n<body>\n${updated}\n</body>`;
+	return `<head>\n<link rel="stylesheet" type="text/css" href="${cssFile}" />\n<style>\n${cssText}\n</style>\n</head>\n<body>\n${updated}\n</body>`;
 };
 
 const enableRat = (app: Express): void => {
